@@ -127,12 +127,12 @@ const GameBoard: React.FC<Props> = ({ boardSize, setIsGameStated }) => {
   };
 
   useEffect(() => {
-    if (isGameDraw()) {
-      setIsGameEnded(true);
-      setIsDraw(true);
-    } else if (isCurrentPlayerWin()) {
+    if (isCurrentPlayerWin()) {
       setIsGameEnded(true);
       setIsDraw(false);
+    } else if (isGameDraw()) {
+      setIsGameEnded(true);
+      setIsDraw(true);
     } else {
       const cellsContainer =
         document.querySelector<HTMLDivElement>(".cellsContainer");
