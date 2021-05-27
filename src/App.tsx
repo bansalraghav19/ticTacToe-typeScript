@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import GameBoard from "./components/gameBoard/index";
+import InputComponent from "./components/inputComponent/index";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [boardSize, setBoardSize] = useState<number>(() => 3);
+  const [isGameStarted, setIsGameStated] = useState<boolean>(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      {!isGameStarted ? (
+        <>
+          <h1>Tic Tac Toe</h1>
+          <InputComponent
+            boardSize={boardSize}
+            setBoardSize={setBoardSize}
+            setIsGameStated={setIsGameStated}
+          />
+        </>
+      ) : (
+        <GameBoard setIsGameStated={setIsGameStated} boardSize={boardSize} />
+      )}
     </div>
   );
-}
+};
 
 export default App;
