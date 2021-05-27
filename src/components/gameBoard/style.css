@@ -50,6 +50,7 @@
   display: grid;
   justify-content: center;
   transform-style: preserve-3d;
+  position: relative;
 }
 
 .cellsContainer .cell {
@@ -60,8 +61,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateZ(100px);
-  perspective: 500px;
+  perspective: 1000px;
+  z-index: 10;
 }
 
 .cellsContainer .cell.topBorder {
@@ -89,6 +90,7 @@
   background: var(--primary-color);
   transform: rotate(45deg);
   transition: opacity 0.5s;
+  z-index: 10;
 }
 
 .cellsContainer.cross .cell:not(.circle):not(.cross)::after,
@@ -100,6 +102,7 @@
   background: var(--primary-color);
   transform: rotate(-45deg);
   transition: opacity 0.5s;
+  z-index: 10;
 }
 
 .cellsContainer.circle .cell:not(.circle):not(.cross)::before,
@@ -111,6 +114,7 @@
   background: var(--primary-color-dark);
   border-radius: 50%;
   transition: opacity 0.5s;
+  z-index: 10;
 }
 
 .cellsContainer.circle .cell:not(.circle):not(.cross)::after,
@@ -122,6 +126,7 @@
   background: white;
   border-radius: 50%;
   transition: opacity 0.5s;
+  z-index: 10;
 }
 
 .cellsContainer.cross .cell:not(.circle):not(.cross)::before,
@@ -147,6 +152,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 20;
 }
 
 .overlay .game-result {
