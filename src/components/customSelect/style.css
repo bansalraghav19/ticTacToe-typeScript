@@ -65,7 +65,7 @@
   height: 100%;
   width: 100%;
   stroke-dasharray: 0, calc(var(--w) + var(--h)), var(--w), var(--h);
-  transition: all 0.8s;
+  transition: stroke-dasharray 0.4s ease-in, stroke-dashoffset 0.8s ease 0.35s;
 }
 
 .select-container.show .select-label .svg-container rect {
