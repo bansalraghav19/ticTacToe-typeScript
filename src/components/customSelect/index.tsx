@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import "./style.css";
 
 interface Props {
@@ -55,6 +55,12 @@ const CustomSelect: React.FC<Props> = ({ dataList, onChange }) => {
     }
   };
 
+  useEffect(() => {
+    const svgElement = document.querySelector(".svg-container") as HTMLElement;
+    svgElement.style.setProperty("--w", `${svgElement.clientWidth}px`);
+    svgElement.style.setProperty("--h", `${svgElement.clientHeight}px`);
+  }, []);
+
   return (
     <div
       tabIndex={0}
@@ -62,10 +68,12 @@ const CustomSelect: React.FC<Props> = ({ dataList, onChange }) => {
       onBlur={() => setIsOpen(false)}
       onKeyDown={handleKeyChange}
     >
-      <span
-        onClick={toggleOpen}
-        className="select-label"
-      >{`${selectedId} x ${selectedId}`}</span>
+      <span onClick={toggleOpen} className="select-label">
+        {`${selectedId} x ${selectedId}`}
+        <svg className="svg-container">
+          <rect x="0" y="0"></rect>
+        </svg>
+      </span>
       <ul className="select-options-container">
         {dataList.map(({ id, size }) => (
           <li
