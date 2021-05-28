@@ -40,12 +40,14 @@ const CustomSelect: React.FC<Props> = ({ dataList, onChange }) => {
         const nextElement = dataList[curIndex + 1];
         if (nextElement) {
           setSelectedId(nextElement.id);
+          onChange(nextElement.id);
         }
         break;
       case "ArrowUp":
         const prevElement = dataList[curIndex - 1];
         if (prevElement) {
           setSelectedId(prevElement.id);
+          onChange(prevElement.id);
         }
         break;
       default:
