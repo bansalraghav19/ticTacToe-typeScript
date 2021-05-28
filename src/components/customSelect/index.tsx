@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import "./style.css";
 
 interface Props {
@@ -12,9 +12,12 @@ interface Props {
 const CustomSelect: React.FC<Props> = ({ dataList, onChange }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<number>(3);
+  const listConatinerRef = useRef<HTMLUListElement | null>(null);
+  const activeOptionRef = useRef<HTMLLIElement | null>(null);
 
   const selectedElementRef = useCallback((node: HTMLLIElement | null) => {
     if (node) {
+      activeOptionRef.current = node;
       node.scrollIntoView({ block: "nearest" });
     }
   }, []);
@@ -61,6 +64,12 @@ const CustomSelect: React.FC<Props> = ({ dataList, onChange }) => {
     svgElement.style.setProperty("--h", `${svgElement.clientHeight}px`);
   }, []);
 
+  useEffect(() => {
+    if (isOpen && activeOptionRef.current) {
+      listConatinerRef.current?.scrollTo(0, activeOptionRef.current.offsetTop);
+    }
+  }, [isOpen]);
+
   return (
     <div
       tabIndex={0}
@@ -74,7 +83,7 @@ const CustomSelect: React.FC<Props> = ({ dataList, onChange }) => {
           <rect x="0" y="0"></rect>
         </svg>
       </span>
-      <ul className="select-options-container">
+      <ul ref={listConatinerRef} className="select-options-container">
         {dataList.map(({ id, size }) => (
           <li
             key={id}
