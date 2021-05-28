@@ -1,0 +1,81 @@
+.select-container {
+  position: relative;
+}
+
+.select-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 330px;
+  border-bottom: 2px solid grey;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  user-select: none;
+  letter-spacing: 0.6rem;
+  border-radius: 4px;
+  outline: none;
+}
+
+.select-container .select-label::after {
+  content: "";
+  display: inline-block;
+  border: 6px solid transparent;
+  border-top-color: var(--primary-color);
+  transition: transform 0.4s;
+  position: relative;
+  top: 2px;
+}
+
+.select-container .select-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #27e73e;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.5s;
+}
+
+.select-container.show .select-label::before {
+  transform: scaleX(1);
+}
+
+.select-container.show .select-label::after {
+  transform: rotate(180deg);
+  top: -2px;
+}
+
+.select-container .select-options-container {
+  transform: scaleY(0);
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  background-color: white;
+  transform-origin: top;
+  transition: transform 0.1s;
+}
+
+.select-container.show .select-options-container {
+  transform: scaleX(1);
+}
+
+.select-option {
+  padding: 0.25rem 0.6rem;
+  letter-spacing: 0.6rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.select-option:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.select-option.selected {
+  background-color: var(--primary-color);
+}

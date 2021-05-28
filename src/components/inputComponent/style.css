@@ -9,7 +9,7 @@
   margin-bottom: 10px;
 }
 
-.ic-form .icSelect select {
+.ic-form select {
   min-width: 100%;
   padding: 0.8rem;
   border: none;
@@ -18,26 +18,12 @@
   letter-spacing: 1rem;
   position: relative;
   border-radius: 5%;
-}
-
-.ic-form .icSelect {
-  position: relative;
-}
-
-.ic-form .icSelect::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 3px;
-  background-color: var(--primary-color);
-  bottom: 0;
-  left: 0;
-  transform-origin: center;
+  border-bottom: 3px solid var(--primary-color);
 }
 
 .ic-form select option {
   padding: 20px;
-  letter-spacing: 1rem;
+  letter-spacing: 2rem;
 }
 
 .ic-form select option:hover {

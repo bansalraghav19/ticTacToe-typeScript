@@ -1,5 +1,6 @@
 import React from "react";
 import { boardOptions } from "../../utilities/staticData";
+import CustomSelect from "../customSelect/index";
 import "./style.css";
 
 interface Props {
@@ -13,8 +14,8 @@ const InputComponent: React.FC<Props> = ({
   setBoardSize,
   setIsGameStated,
 }) => {
-  const changeHandle = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setBoardSize(parseInt(event.target.value));
+  const changeHandle = (id: number) => {
+    setBoardSize(id);
   };
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -23,16 +24,7 @@ const InputComponent: React.FC<Props> = ({
   return (
     <form className="ic-form mb-30" onSubmit={submitHandler}>
       <div className="ic-form-row">
-        <div className="icSelect">
-          <select value={boardSize} onChange={changeHandle}>
-            {boardOptions.map((option) => (
-              <option
-                value={option.size}
-                key={option.id}
-              >{`${option.size}x${option.size}`}</option>
-            ))}
-          </select>
-        </div>
+        <CustomSelect onChange={changeHandle} dataList={boardOptions} />
       </div>
       <button type="submit">Build Board</button>
     </form>
