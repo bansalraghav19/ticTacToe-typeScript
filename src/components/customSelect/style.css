@@ -37,6 +37,10 @@
   transition: transform 0.5s;
 }
 
+.select-container.show .select-options-container {
+  box-shadow: rgb(0 0 0 / 20%) 0px 20px 50px 0px;
+}
+
 .select-container.show .select-label::before {
   transform: scaleX(1);
 }
